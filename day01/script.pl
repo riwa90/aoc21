@@ -2,23 +2,20 @@
 use warnings;
 use strict;
 
-my $input_path = "./input1.txt";
+my $part = $ENV{part};
+my $seq_len = 3;
+my $count = 0;
 
-open my $fh, '<', $input_path or die;
-my @input = <$fh>;
-my $count_part1 = my $count_part2 = 0;
-
-$count_part1++ if(@input[0] < @input[1]);
-
-$count_part1++ if(@input[1] < @input[2]);
-
-for(my $i = 3; $i < scalar @input; $i++) {
+$seq_len = 1 if($part eq "part1");
 	
-	$count_part1++ if(@input[$i - 1] < @input[$i]);
-	$count_part2++ if(@input[$i - 3] < @input[$i]);
+open my $fh, '<',  "./input.txt" or die;
+my @input = <$fh>;
+
+for(my $i = $seq_len; $i < scalar @input; $i++) {	
+	$count++ if($input[$i - $seq_len] < $input[$i]);
 }
 
-print "Number of increases of sequential values: $count_part1\n";
-print "Number of increases of sequential 3-value sums: $count_part2\n";
+print "$count\n";
 
 close($fh);
+
