@@ -1,7 +1,7 @@
 #!/usr/bin/perl/
-use warnings;
 use strict;
-use feature "switch";
+use warnings;
+use experimental "switch";
 
 #Part 1 solution
 sub part1_solution {
