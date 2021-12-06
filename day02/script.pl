@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use feature "switch";
 
-# Part 1 solution
+#Part 1 solution
 sub part1_solution {
 	my @input = @_;
 	
@@ -26,7 +26,7 @@ sub part1_solution {
 	print "$prod\n";
 }
 
-# Part 2 solution
+#Part 2 solution
 sub part2_solution {
 	my @input = @_;
 	
