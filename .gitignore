@@ -24,3 +24,7 @@ hs_err_pid*
 
 # Backup and example files
 *.bak
+
+.idea/
+.DS_Store
+*.iml
