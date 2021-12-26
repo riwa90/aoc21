@@ -8,16 +8,6 @@ public class Board {
         this.marks = new boolean[5][5];
     }
 
-    public void debug() {
-        for(int i = 0; i < 5; i++) {
-            for(int j = 0; j < 5; j++) {
-                System.out.print(this.board[i][j] + " ");
-            }
-            System.out.print("\n");
-        }
-        System.out.println("-------------------------");
-    }
-
     public boolean checkAndMarkNumber(int number) {
         for(int i = 0; i < 5; i++) {
             for(int j = 0; j < 5; j++) {

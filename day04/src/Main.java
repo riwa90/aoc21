@@ -16,13 +16,30 @@ public class Main {
         return 0;
     }
 
+    public static int loseBingo(int[] numbers, ArrayList<Board> boards) {
+        for(int number : numbers) {
+            var boardsToRemove = new HashSet<Board>();
+            for(Board board : boards) {
+                if(board.checkAndMarkNumber(number)) {
+                    boardsToRemove.add(board);
+                    if(boards.size() == 1) {
+                        return number * boards.get(0).sumOfUnmarkedNumbers();
+                    }
+                }
+            }
+            boards.removeAll(boardsToRemove);
+        }
+        return 0;
+    }
+
     public static void main(String[] args) throws IOException {
+        String part = System.getenv("part");
+        part = Objects.nonNull(part) ? part : "part1";
         var input = Files.newBufferedReader(Path.of("input.txt"));
         var numbers =  Arrays.stream(input.readLine()
                         .split(","))
                         .mapToInt(Integer::parseInt)
                         .toArray();
-
         var boards = new ArrayList<Board>();
         while(input.skip(1) != 0) {
             var board = new int[5][];
@@ -35,6 +52,10 @@ public class Main {
             }
             boards.add(new Board(board));
         }
-        System.out.println(playBingo(numbers, boards));
+        if(part.equals("part1")) {
+            System.out.println(playBingo(numbers, boards));
+        } else {
+            System.out.println(loseBingo(numbers, boards));
+        }
     }
 }
